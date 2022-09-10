@@ -1,5 +1,5 @@
 import { Button, Input, Popover  } from 'antd';
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {useSelector} from 'react-redux'
 import DigitRoll from '../Components/DigitRoll';
 import RandomRoll from '../Components/RandomRoll';
@@ -33,7 +33,7 @@ export default function MainPage() {
 
     const contentPopup = () => {
       return <div>
-        <p className='m-0'>Tỉ lệ thắng cộng thêm: </p>
+        <p className='m-0'>Tỉ lệ thắng cộng thêm (%): </p>
         <Input type='number' value={vipData.tiLe} onChange={(e) => {
           setVipData({
             ...vipData,
@@ -47,18 +47,25 @@ export default function MainPage() {
             maVe: e.target.value
           })
         }}></Input>
+       
        <div className='flex justify-between mt-5'>
        <Button type='primary' onClick={() => {
           console.log(vipData)
           setShowPop(false);
           addVipButton();
+          window.location.reload()
         }}>Add</Button>
         <Button onClick={() => {
           setShowPop(false)
         }}>Cancel</Button>
        </div>
+       <p className='mt-5'>hong có validate nhe, nhập sai lỗi gáng chịu hê hê</p>
       </div>
     }
+
+    useEffect(() => {
+      dispatch({type: "END_ROLL"})
+    }, [])
 
   return (
     <div className='bg-redvintage h-screen'>

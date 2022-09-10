@@ -70,7 +70,7 @@ export default function ModelTemplate() {
         name="numberOfNum"
         rules={[{ required: true, message: 'Please input Number of Digits!' }]}
       >
-        <Input type='number' min={4} max={8}/>
+        <Input type='number' min={2} max={8}/>
       </Form.Item>
 
       <Form.Item
